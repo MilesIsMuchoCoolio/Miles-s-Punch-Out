@@ -1,45 +1,118 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEON BRAWL // Downtown Circuit</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <main class="cabinet">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">ORIGINAL ARCADE EDITION</p>
-        <h1>NEON <span>BRAWL</span></h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Brawl</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <div id="titleScreen" class="overlay visible">
+        <div class="title-card">
+          <p class="small-label">ORIGINAL ARCADE EDITION</p>
+          <h1>NEON BRAWL</h1>
+          <p class="subtitle">A downtown showdown of speed, timing, and punishment.</p>
+          <div class="title-controls">
+            <span>A / D</span> dodge
+            <span>S</span> block
+            <span>SPACE</span> body blow
+            <span>W + A/D</span> uppercut
+            <span>P</span> star punch
+          </div>
+          <button id="startButton">START FIGHT</button>
+        </div>
       </div>
-      <div class="round-badge">ROUND <b id="round">1</b><small>/ 3</small></div>
-    </header>
 
-    <section class="scoreboard" aria-label="Fight status">
-      <div class="fighter-card hero-card"><span>ROOKIE</span><strong id="playerName">MILES</strong><div class="meter"><i id="playerHp"></i></div><small>VITALITY</small></div>
-      <div class="timer"><b id="timer">60</b><small>SECONDS</small><div id="status">READY?</div></div>
-      <div class="fighter-card rival-card"><span>RIVAL</span><strong id="enemyName">CHROME JACK</strong><div class="meter"><i id="enemyHp"></i></div><small>VITALITY</small></div>
-    </section>
+      <header class="topbar">
+        <div>
+          <p class="small-label">ROUND</p>
+          <h2 id="roundLabel">1</h2>
+        </div>
+        <div class="logo-box">NEON <span>BRAWL</span></div>
+        <div class="timer-box">
+          <span>TIME</span>
+          <strong id="timer">60</strong>
+        </div>
+      </header>
 
-    <section class="arena" id="arena">
-      <div class="spotlight left"></div><div class="spotlight right"></div>
-      <div class="cityline"></div><div class="ropes rope-1"></div><div class="ropes rope-2"></div><div class="ropes rope-3"></div>
-      <div class="corner-label">DOWNTOWN CIRCUIT <span>LIVE</span></div>
-      <div class="combo" id="combo">0 HIT COMBO</div>
-      <div class="fighter player" id="player"><div class="shadow"></div><div class="body"><div class="head"><i class="eye"></i></div><div class="torso"></div><div class="glove left-glove"></div><div class="glove right-glove"></div><div class="leg left-leg"></div><div class="leg right-leg"></div></div></div>
-      <div class="fighter enemy" id="enemy"><div class="shadow"></div><div class="body"><div class="head"><i class="eye"></i></div><div class="torso"></div><div class="glove left-glove"></div><div class="glove right-glove"></div><div class="leg left-leg"></div><div class="leg right-leg"></div></div></div>
-      <div class="impact" id="impact">POW!</div>
-      <div class="round-message" id="roundMessage"><b>FIGHT!</b><span>MAKE YOUR MOVE</span></div>
-    </section>
+      <section class="hud">
+        <div class="fighter-box player-box">
+          <div class="fighter-name">MILES</div>
+          <div class="hp-bar"><i id="playerHp"></i></div>
+        </div>
+        <div class="center-status" id="statusText">READY</div>
+        <div class="fighter-box enemy-box">
+          <div class="fighter-name enemy" id="enemyName">CHROME JACK</div>
+          <div class="hp-bar enemy"><i id="enemyHp"></i></div>
+        </div>
+      </section>
 
-    <section class="controls">
-      <div class="control-group"><h2>MOVE</h2><div class="keys"><kbd>A</kbd><kbd>D</kbd><span>DODGE LEFT / RIGHT</span></div><div class="keys"><kbd>S</kbd><span>BLOCK</span></div></div>
-      <div class="control-group"><h2>ATTACK</h2><div class="keys"><kbd>SPACE</kbd><span>BODY BLOW</span></div><div class="keys"><kbd>W</kbd> + <kbd>A</kbd>/<kbd>D</kbd><span>UPPERCUT</span></div></div>
-      <div class="control-group star"><h2>SUPER</h2><div class="keys"><kbd>P</kbd><span>CHARGE STAR PUNCH</span></div><div class="star-meter"><i id="starMeter"></i></div><small>LAND CLEAN HITS TO CHARGE</small></div>
-    </section>
-    <footer><span>© 2026 NEON BRAWL — ORIGINAL FAN-FREE ARCADE CONCEPT</span><button id="restart">RESTART FIGHT</button></footer>
-  </main>
-  <script src="game.js"></script>
-</body>
+      <section class="arena" id="arena">
+        <div class="ring-glow"></div>
+        <div class="corner corner-left">LIVE</div>
+        <div class="corner corner-right">BRAWL</div>
+        <div class="combo" id="comboText">0 HIT COMBO</div>
+        <div class="star-meter-wrap">
+          <span>STAR CHARGE</span>
+          <div class="star-meter"><i id="starMeter"></i></div>
+        </div>
+
+        <div class="fighter player" id="player">
+          <div class="shadow"></div>
+          <div class="body">
+            <div class="head"><i class="eye"></i></div>
+            <div class="torso"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+          </div>
+        </div>
+
+        <div class="fighter enemy" id="enemy">
+          <div class="shadow"></div>
+          <div class="body">
+            <div class="head"><i class="eye"></i></div>
+            <div class="torso"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+          </div>
+        </div>
+
+        <div class="impact" id="impactText">POW!</div>
+        <div id="messageBanner" class="message-banner hidden">
+          <strong id="messageTitle">FIGHT!</strong>
+          <small id="messageSub">MAKE YOUR MOVE</small>
+        </div>
+      </section>
+
+      <section class="controls-panel">
+        <div class="controls-block">
+          <h3>MOVE</h3>
+          <div class="key-row"><kbd>A</kbd><kbd>D</kbd><span>DODGE LEFT / RIGHT</span></div>
+          <div class="key-row"><kbd>S</kbd><span>BLOCK</span></div>
+        </div>
+        <div class="controls-block">
+          <h3>ATTACK</h3>
+          <div class="key-row"><kbd>SPACE</kbd><span>BODY BLOW</span></div>
+          <div class="key-row"><kbd>W</kbd> + <kbd>A/D</kbd><span>UPPERCUT</span></div>
+        </div>
+        <div class="controls-block star-block">
+          <h3>SUPER</h3>
+          <div class="key-row"><kbd>P</kbd><span>STAR PUNCH</span></div>
+          <small>CHARGE BY LANDING CLEAN HITS</small>
+        </div>
+      </section>
+
+      <footer class="footer-bar">
+        <span>ORIGINAL FAN ARCADE CONCEPT</span>
+        <button id="restartButton" class="restart">RESTART</button>
+      </footer>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
 </html>

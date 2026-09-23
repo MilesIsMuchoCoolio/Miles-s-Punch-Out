@@ -1,17 +1,24 @@
 # Neon Brawl
 
-A self-contained, original browser boxing game inspired by classic arcade timing games. It uses no third-party game assets, characters, names, music, or code.
-
-## Run it
-
-Open `index.html` in a browser, or serve the folder with any static web server.
+A handcrafted browser boxing game inspired by classic arcade timing games, but built as an original concept with no copyrighted characters, art, or names.
 
 ## Controls
 
-- **A / D** — dodge left / right
-- **S** — block while held
-- **Space** — body blow
-- **W + A / D** — left/right uppercut
-- **P** — spend a charged star punch
+- A / D: dodge left / right
+- S: block while held
+- Space: body blow
+- W + A / W + D: uppercut
+- P: star punch (requires full charge)
 
-Land clean hits to charge the star meter. The game is intentionally built as an original neon arcade concept rather than a recreation of any copyrighted game.
+## Play
+
+Open `index.html` in a browser.
+
+## Features
+
+- Title screen
+- Multiple rounds
+- Enemy patterns and AI
+- Combo and star meter
+- Simple sound effects
+- Responsive arcade UI
